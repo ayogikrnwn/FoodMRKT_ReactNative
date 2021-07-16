@@ -9,7 +9,7 @@ import {
 import {DUMCover, ICBackWhite} from '../../assets';
 import {Button, Counter, Rating} from '../../components';
 
-const FoodDetail = () => {
+const FoodDetail = ({navigation}) => {
   return (
     <View style={styles.page}>
       <ImageBackground source={DUMCover} style={styles.cover}>
@@ -24,7 +24,7 @@ const FoodDetail = () => {
               <Text style={styles.title}>Cherry Healthy</Text>
               <Rating />
             </View>
-           <Counter />
+            <Counter />
           </View>
           <Text style={styles.description}>
             Makanan khas Bandung yang cukup sering dipesan oleh anak muda dengan
@@ -36,13 +36,16 @@ const FoodDetail = () => {
             Seledri, telur, blueberry, madu.
           </Text>
         </View>
-        <View  style={styles.footer}>
+        <View style={styles.footer}>
           <View style={styles.priceContainer}>
             <Text style={styles.labelTotal}>Total Price</Text>
-            <Text style={styles.priceTotal} >IDR 12.289.000</Text>
+            <Text style={styles.priceTotal}>IDR 12.289.000</Text>
           </View>
           <View style={styles.btn}>
-            <Button text="Order Now" />
+            <Button
+              text="Order Now"
+              onPress={() => navigation.navigate('OrderSummary')}
+            />
           </View>
         </View>
       </View>
@@ -77,7 +80,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   mainContent: {
-    flex: 1
+    flex: 1,
   },
   productContainer: {
     flexDirection: 'row',
@@ -103,24 +106,24 @@ const styles = StyleSheet.create({
     marginBottom: 4,
   },
   footer: {
-      flexDirection: 'row',
-     paddingVertical: 16,
-     alignItems: 'center'
+    flexDirection: 'row',
+    paddingVertical: 16,
+    alignItems: 'center',
   },
   btn: {
-      width: 183
+    width: 183,
   },
   priceContainer: {
-      flex: 1
+    flex: 1,
   },
   labelTotal: {
     fontSize: 13,
     fontFamily: 'Poppins-Regular',
-    color: '#8D92A3'
+    color: '#8D92A3',
   },
   priceTotal: {
     fontSize: 18,
     fontFamily: 'Poppins-Regular',
-    color: '#020202'
-  }
+    color: '#020202',
+  },
 });

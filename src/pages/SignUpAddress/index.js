@@ -18,7 +18,7 @@ const SignUpAddress = ({navigation}) => {
           <Gap height={24} />
           <Button
             text="Sign Up Now"
-            onPress={() => navigation.replace('MainApp')}
+            onPress={() => navigation.replace('SuccessRegister')}
           />
           <Gap height={12} />
         

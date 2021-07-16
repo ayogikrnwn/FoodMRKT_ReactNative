@@ -26,132 +26,103 @@ const renderTabBar = (props) => (
   />
 );
 
-const NewTaste = () => {
+const InProgress = () => {
   const navigation = useNavigation();
   return (
     <View style={{paddingTop: 8, paddingHorizontal: 10}}>
       <ItemListFood
         rating={3}
         image={DUMfone}
-        onPress={() => navigation.navigate('FoodDetail')}
-        type="product"
+        onPress={() => navigation.navigate('OrderDetail')}
+        type="in-progress"
+        items="3"
+        price="2.000.000"
         name="Kari Sleman"
-        price="289.000"
       />
       <ItemListFood
         rating={3}
         image={DUMftwo}
-        onPress={() => navigation.navigate('FoodDetail')}
-        type="product"
+        type="in-progress"
+        items="3"
+        price="2.000.000"
         name="Kari Sleman"
-        price="289.000"
+        onPress={() => navigation.navigate('OrderDetail')}
       />
       <ItemListFood
         rating={3}
         image={DUMfthree}
-        onPress={() => navigation.navigate('FoodDetail')}
-        type="product"
+        type="in-progress"
+        items="3"
+        price="2.000.000"
         name="Kari Sleman"
-        price="289.000"
+        onPress={() => navigation.navigate('OrderDetail')}
       />
       <ItemListFood
         rating={3}
         image={DUMffour}
-        onPress={() => navigation.navigate('FoodDetail')}
-        type="product"
+        type="in-progress"
+        items="3"
+        price="2.000.000"
         name="Kari Sleman"
-        price="289.000"
+        onPress={() => navigation.navigate('OrderDetail')}
       />
     </View>
   );
 };
 
-const Popular = () => {
+const PastOrder = () => {
   const navigation = useNavigation();
   return (
     <View style={{paddingTop: 8, paddingHorizontal: 10}}>
       <ItemListFood
         rating={3}
         image={DUMffour}
-        onPress={() => navigation.navigate('FoodDetail')}
-        type="product"
+        type="past-orders"
+        onPress={() => navigation.navigate('OrderDetail')}
+        items="3"
+        price="2.000.000"
         name="Kari Sleman"
-        price="289.000"
+        date="Jun 12, 14:00"
       />
       <ItemListFood
         rating={3}
         image={DUMftwo}
-        onPress={() => navigation.navigate('FoodDetail')}
-        type="product"
+        type="past-orders"
+        onPress={() => navigation.navigate('OrderDetail')}
+        items="3"
+        price="2.000.000"
         name="Kari Sleman"
-        price="289.000"
+        date="Mei 2, 09:00"
+        status="Cancelled"
       />
       <ItemListFood
         rating={3}
         image={DUMfone}
-        onPress={() => navigation.navigate('FoodDetail')}
-        type="product"
+        type="past-orders"
+        onPress={() => navigation.navigate('OrderDetail')}
+        items="3"
+        price="2.000.000"
         name="Kari Sleman"
-        price="289.000"
       />
     </View>
   );
 };
 
-const Recomended = () => {
-  const navigation = useNavigation();
-  return (
-    <View style={{paddingTop: 8, paddingHorizontal: 10}}>
-      <ItemListFood
-        rating={3}
-        image={DUMfthree}
-        onPress={() => navigation.navigate('FoodDetail')}
-        type="product"
-        name="Kari Sleman"
-        price="289.000"
-      />
-      <ItemListFood
-        rating={3}
-        image={DUMftwo}
-        onPress={() => navigation.navigate('FoodDetail')}
-        type="product"
-        name="Kari Sleman"
-        price="289.000"
-      />
-      <ItemListFood
-        rating={3}
-        image={DUMfone}
-        onPress={() => navigation.navigate('FoodDetail')}
-        type="product"
-        name="Kari Sleman"
-        price="289.000"
-      />
-      <ItemListFood
-        rating={3}
-        image={DUMffour}
-        onPress={() => navigation.navigate('FoodDetail')}
-        type="product"
-        name="Kari Sleman"
-        price="289.000"
-      />
-    </View>
-  );
-};
+
 
 const renderScene = SceneMap({
-  1: NewTaste,
-  2: Popular,
-  3: Recomended,
+  1: InProgress,
+  2: PastOrder,
 });
 
-const HomeTabSection = () => {
+const OrderTabSection = () => {
   const layout = useWindowDimensions();
 
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
-    {key: '1', title: 'New Taste'},
-    {key: '2', title: 'Popular'},
-    {key: '3', title: 'Recomended'},
+    {key: '1', title: 'In Progress'},
+    {key: '2', title: 'Past Order'},
+    
   ]);
 
   return (
@@ -165,6 +136,6 @@ const HomeTabSection = () => {
   );
 };
 
-export default HomeTabSection;
+export default OrderTabSection;
 
 const styles = StyleSheet.create({});

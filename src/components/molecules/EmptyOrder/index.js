@@ -1,28 +1,30 @@
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {ILSREG} from '../../assets/illustration';
-import {Button, Gap} from '../../components';
+import {ILEmpty} from '../../../assets';
+import {Button, Gap} from '../../atoms';
 
-const SuccessRegister = ({navigation}) => {
+const EmptyOrder = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
-      <ILSREG />
+      <ILEmpty />
 
-      <Text style={styles.title}>Yeay! Completed</Text>
-      <Text style={styles.subtitle}>Now you are able to order</Text>
-      <Text style={styles.subtitle}>some foods as a self-reward</Text>
+      <Text style={styles.title}>Ouch! Hungry</Text>
+      <Text style={styles.subtitle}>Seems like you have not</Text>
+      <Text style={styles.subtitle}>ordered any food yets</Text>
       <Gap height={30} />
       <View style={styles.btncont}>
         <Button
           text="Find Foods"
-          onPress={() => navigation.navigate('MainApp')}
+          onPress={() => navigation.replace('MainApp')}
         />
       </View>
     </View>
   );
 };
 
-export default SuccessRegister;
+export default EmptyOrder;
 
 const styles = StyleSheet.create({
   container: {
@@ -30,7 +32,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingTop: 100
+    paddingTop: 100,
   },
   title: {
     fontSize: 20,

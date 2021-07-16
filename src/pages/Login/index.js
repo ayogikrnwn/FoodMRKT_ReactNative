@@ -1,8 +1,27 @@
-import React from 'react';
+import Axios from 'axios';
+import React, {useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {Button, Gap, Header, TextInput} from '../../components';
+import {useForm} from '../../utils';
 
 const Login = ({navigation}) => {
+  // const [email, setEmail] = useState('');
+  // const [password, setPassword] = useState('');
+  const [form, setForm] = useForm({
+    email: '',
+    password: '',
+  });
+
+  const onSubmit = () => {
+    console.log('form', form);
+    Axios.post('http://192.168.1.6:8000/api/login', form)
+      .then((res) => {
+        console.log('Success', res);
+      })
+      .catch((err) => {
+        console.log('Error', err);
+      });
+  };
   return (
     <View style={styles.page}>
       <Header title="Sign In" subtitle="Find your best ever meal" />
@@ -10,11 +29,19 @@ const Login = ({navigation}) => {
         <TextInput
           label="Email Address"
           placeholder="Type your email address"
+          value={form.email}
+          onChangeText={(value) => setForm('email', value)}
         />
         <Gap height={16} />
-        <TextInput label="Password" placeholder="Type your password" />
+        <TextInput
+          label="Password"
+          placeholder="Type your password"
+          value={form.password}
+          onChangeText={(value) => setForm('password', value)}
+          secureTextEntry
+        />
         <Gap height={24} />
-        <Button text="Sign In" />
+        <Button text="Sign In" onPress={onSubmit} />
         <Gap height={12} />
         <Button
           text="Create New Account"
